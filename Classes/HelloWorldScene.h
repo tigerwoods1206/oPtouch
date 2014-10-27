@@ -2,7 +2,6 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
-#include "WaveShift3D.h"
 
 class HelloWorld : public cocos2d::Layer
 {
@@ -13,9 +12,12 @@ public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
     virtual bool init();
     
-    bool onTouchBegan(cocos2d::Touch *touches, cocos2d::Event *event);
-    void onTouchMoved(cocos2d::Touch *touches, cocos2d::Event *event);
-    void onTouchEnded(cocos2d::Touch *touches, cocos2d::Event *event);
+    void onTouchesBegan(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *event);
+    //bool onTouchBegan(cocos2d::Touch *touches, cocos2d::Event *event);
+    //void onTouchMoved(cocos2d::Touch *touches, cocos2d::Event *event);
+    //void onTouchEnded(cocos2d::Touch *touches, cocos2d::Event *event);
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);
     
@@ -33,11 +35,15 @@ private:
     float opSize;
     float touchPower;
     cocos2d::Point touchPos;
+    cocos2d::Vector<cocos2d::Vec2> touchPoses;
+    cocos2d::Vector<float> touchRaduses;
     bool  isTouched = false;
     bool  toggleImage = true;
     
     void replaceImage(cocos2d::Sprite *sprite, const char *imageFileName);
     void setTotu(cocos2d::Sprite *sp, cocos2d::NodeGrid *gr );
+    void set_Touchparams(cocos2d::Touch* touch);
+    void unset_Touchparams();
     
 };
 

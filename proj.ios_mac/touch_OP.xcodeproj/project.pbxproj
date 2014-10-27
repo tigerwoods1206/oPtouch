@@ -64,8 +64,9 @@
 		50EF62A317ECD613001EB2F8 /* Icon-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 50EF62A117ECD613001EB2F8 /* Icon-50.png */; };
 		571D47A419F3C48400B6383B /* g_sample.png in Resources */ = {isa = PBXBuildFile; fileRef = 571D47A319F3C48400B6383B /* g_sample.png */; };
 		571D47A619F3EE5000B6383B /* slimewallpaper1024x768.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 571D47A519F3EE5000B6383B /* slimewallpaper1024x768.jpg */; };
-		76897FA619F0D3430007A5B9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76897FA519F0D3430007A5B9 /* Images.xcassets */; };
 		76897FA919F0E6780007A5B9 /* WaveShift3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76897FA719F0E6780007A5B9 /* WaveShift3D.cpp */; };
+		76CA4AF619FE40D200783FD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CA4AF519FE40D200783FD5 /* Images.xcassets */; };
+		76CA4AFB19FE423F00783FD5 /* Lens3D_Double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76CA4AF919FE423F00783FD5 /* Lens3D_Double.cpp */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -266,9 +267,11 @@
 		50EF62A117ECD613001EB2F8 /* Icon-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-50.png"; sourceTree = "<group>"; };
 		571D47A319F3C48400B6383B /* g_sample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = g_sample.png; sourceTree = "<group>"; };
 		571D47A519F3EE5000B6383B /* slimewallpaper1024x768.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = slimewallpaper1024x768.jpg; sourceTree = "<group>"; };
-		76897FA519F0D3430007A5B9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "touch_OP iOS/Images.xcassets"; sourceTree = SOURCE_ROOT; };
 		76897FA719F0E6780007A5B9 /* WaveShift3D.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = WaveShift3D.cpp; path = ../Classes/WaveShift3D.cpp; sourceTree = "<group>"; };
 		76897FA819F0E6780007A5B9 /* WaveShift3D.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveShift3D.h; path = ../Classes/WaveShift3D.h; sourceTree = "<group>"; };
+		76CA4AF519FE40D200783FD5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		76CA4AF919FE423F00783FD5 /* Lens3D_Double.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lens3D_Double.cpp; sourceTree = "<group>"; };
+		76CA4AFA19FE423F00783FD5 /* Lens3D_Double.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lens3D_Double.h; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -351,6 +354,8 @@
 				1AFAF8B516D35DE700DB1158 /* HelloWorldScene.cpp */,
 				76897FA719F0E6780007A5B9 /* WaveShift3D.cpp */,
 				76897FA819F0E6780007A5B9 /* WaveShift3D.h */,
+				76CA4AF919FE423F00783FD5 /* Lens3D_Double.cpp */,
+				76CA4AFA19FE423F00783FD5 /* Lens3D_Double.h */,
 			);
 			name = Classes;
 			path = ../classes;
@@ -466,9 +471,9 @@
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				76CA4AF519FE40D200783FD5 /* Images.xcassets */,
 				571D47A519F3EE5000B6383B /* slimewallpaper1024x768.jpg */,
 				571D47A319F3C48400B6383B /* g_sample.png */,
-				76897FA519F0D3430007A5B9 /* Images.xcassets */,
 				1AFAF8B916D35E4900DB1158 /* CloseNormal.png */,
 				1AFAF8BA16D35E4900DB1158 /* CloseSelected.png */,
 				1AFAF8BB16D35E4900DB1158 /* HelloWorld.png */,
@@ -637,7 +642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5087E78117EB970100C73F5D /* Icon-120.png in Resources */,
-				76897FA619F0D3430007A5B9 /* Images.xcassets in Resources */,
+				76CA4AF619FE40D200783FD5 /* Images.xcassets in Resources */,
 				5087E78617EB970100C73F5D /* Icon-76.png in Resources */,
 				5087E77F17EB970100C73F5D /* Default@2x.png in Resources */,
 				50EF629917ECD46A001EB2F8 /* Icon-100.png in Resources */,
@@ -682,6 +687,7 @@
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
+				76CA4AFB19FE423F00783FD5 /* Lens3D_Double.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
 				76897FA919F0E6780007A5B9 /* WaveShift3D.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,

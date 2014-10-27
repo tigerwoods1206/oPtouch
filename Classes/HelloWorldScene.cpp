@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "Lens3D_Double.h"
 
 USING_NS_CC;
 
@@ -74,8 +75,8 @@ bool HelloWorld::init()
 
     spriteCenter = one_sprite->getPosition();
     opSize       = one_sprite->getContentSize().width * 0.2;
-    touchPower   = opSize;
-    touchPos     = spriteCenter;
+    //touchPower   = opSize;
+    //touchPos     = spriteCenter;
     // create a Waved3D action
     //ActionInterval* waves = Waves3D::create(10, Size(15,10), 18, 15);
     
@@ -88,16 +89,16 @@ bool HelloWorld::init()
     
     //event listener
     //イベントリスナー作成
-    auto listener = EventListenerTouchOneByOne::create();
+    auto listener = EventListenerTouchAllAtOnce::create();
     
     //イベントを飲み込むかどうか
-    listener->setSwallowTouches(true);
+    //listener->setSwallowTouches(true);
     
     //タッチメソッド設定
-    listener->onTouchBegan = CC_CALLBACK_2(HelloWorld::onTouchBegan, this);
-    listener->onTouchMoved = CC_CALLBACK_2(HelloWorld::onTouchMoved, this);
-    listener->onTouchEnded = CC_CALLBACK_2(HelloWorld::onTouchEnded, this);
-    listener->onTouchCancelled = CC_CALLBACK_2(HelloWorld::onTouchCancelled, this);
+    listener->onTouchesBegan = CC_CALLBACK_2(HelloWorld::onTouchesBegan, this);
+    listener->onTouchesMoved = CC_CALLBACK_2(HelloWorld::onTouchesMoved, this);
+    listener->onTouchesEnded = CC_CALLBACK_2(HelloWorld::onTouchesEnded, this);
+    //this->getEventDispatcher()->addEventListenerWithSceneGraphPriority(listener, this);
     
     //優先度100でディスパッチャーに登録
     this->getEventDispatcher()->addEventListenerWithFixedPriority(listener, 100);
@@ -109,26 +110,57 @@ bool HelloWorld::init()
 
 //-------------------------
 // タップ時
-bool HelloWorld::onTouchBegan(Touch *touch, Event *event)
-{
-    /*
-    Point location = touch->getLocation();
-    CCLOG("x:%f, y:%f", location.x, location.y);
-    
-    // create a Waved3D action
-    
-    Size spsize = one_sprite->getContentSize();
-     log("%f, %f", one_sprite->getContentSize().width, one_sprite->getContentSize().height);
-    //one_sprite->getPosition();
-    Action* waves = Lens3D::create(1, Size(10,10),location, 200);
-    one_nodeGrid->runAction(waves);
-     */
-    
-    isTouched = true;
-    
-    return true;
+void HelloWorld::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+    while (iterator != touches.end()) {
+        Touch* touch = (Touch*)(*iterator);
+        auto location = touch->getLocation();
+        isTouched = true;
+        iterator++;
+    }
+    return;
 }
 
+void HelloWorld::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+    
+    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+    while (iterator != touches.end()) {
+        Touch* touch = (Touch*)(*iterator);
+        auto location = touch->getLocation();
+        set_Touchparams(touch);
+        iterator++;
+    }
+    
+    return;
+}
+void HelloWorld::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, cocos2d::Event *event){
+    
+    std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
+    while (iterator != touches.end()) {
+        Touch* touch = (Touch*)(*iterator);
+        auto location = touch->getLocation();
+        
+        iterator++;
+    }
+    isTouched = false;
+    unset_Touchparams();
+    
+    return;
+}
+
+void HelloWorld::set_Touchparams(cocos2d::Touch* touch)
+{
+    auto location = touch->getLocation();
+    touchPoses.pushBack(location);
+    touchRaduses.pushBack(touch->getMajorRadius()*3);
+}
+
+void HelloWorld::unset_Touchparams()
+{
+    touchPoses.clear();
+    touchRaduses.clear();
+}
+/*
 void HelloWorld::onTouchMoved(Touch *touch, Event *event)
 {
     
@@ -144,13 +176,14 @@ void HelloWorld::onTouchMoved(Touch *touch, Event *event)
     float radius = touch->getMajorRadius();
     //touchPower = opSize * (1.0 - radius / opSize);
     touchPower = radius*3;
-    /*
+   
     float power  = opSize * (1.0 - radius / opSize);
     Action* waves = Lens3D::create(1/60, Size(10,10),location, power);
     one_nodeGrid->runAction(waves);
-     */
+   
 }
-
+*/
+/*
 void HelloWorld::onTouchEnded(Touch *touch, Event *event)
 {
     
@@ -179,7 +212,7 @@ void HelloWorld::onTouchEnded(Touch *touch, Event *event)
     
     //this->setTotu(one_sprite, one_nodeGrid);
 }
-
+*/
 void HelloWorld::setTotu(Sprite *sp, NodeGrid *gr ){
     if (sp== nullptr) {
         return;
@@ -197,7 +230,7 @@ void HelloWorld::setTotu(Sprite *sp, NodeGrid *gr ){
 void HelloWorld::update(float delta)
 {
     if (isTouched) {
-        Action* waves = Lens3D::create(0.5, Size(100,100),touchPos, touchPower);
+        Action* waves = Lens3D_Double::create(0.5, Size(100,100),touchPoses, touchRaduses);
         waves->startWithTarget(one_nodeGrid);
         waves->update(delta);
     }
