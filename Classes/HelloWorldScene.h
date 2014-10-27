@@ -35,14 +35,13 @@ private:
     float opSize;
     float touchPower;
     cocos2d::Point touchPos;
-    cocos2d::Vector<cocos2d::Vec2> touchPoses;
-    cocos2d::Vector<float> touchRaduses;
+    std::vector<cocos2d::Vec2> touchPoses;
+    std::vector<float> touchRaduses;
     bool  isTouched = false;
     bool  toggleImage = true;
     
     void replaceImage(cocos2d::Sprite *sprite, const char *imageFileName);
     void setTotu(cocos2d::Sprite *sp, cocos2d::NodeGrid *gr );
-    void set_Touchparams(cocos2d::Touch* touch);
     void unset_Touchparams();
     
 };

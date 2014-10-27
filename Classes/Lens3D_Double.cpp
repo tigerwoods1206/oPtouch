@@ -12,7 +12,7 @@
 
 NS_CC_BEGIN
 
-Lens3D_Double* Lens3D_Double::create(float duration, const Size& gridSize, const Vector<Vec2>& pos_arr,  const Vector<float>& radiuses)
+Lens3D_Double* Lens3D_Double::create(float duration, const Size& gridSize, const std::vector<Vec2>& pos_arr,  const std::vector<float>& radiuses)
 {
     Lens3D_Double *action = new Lens3D_Double();
     
@@ -31,7 +31,7 @@ Lens3D_Double* Lens3D_Double::create(float duration, const Size& gridSize, const
     return action;
 }
 
-bool Lens3D_Double::initWithDuration(float duration, const Size& gridSize, const Vector<Vec2>& pos_arr,  const Vector<float>& radiuses)
+bool Lens3D_Double::initWithDuration(float duration, const Size& gridSize, const std::vector<Vec2>& pos_arr,  const std::vector<float>& radiuses)
 {
     if (Grid3DAction::initWithDuration(duration, gridSize))
     {
@@ -39,7 +39,7 @@ bool Lens3D_Double::initWithDuration(float duration, const Size& gridSize, const
         for(int i = 0; i < pos_arr.size();i++){
             //log("tag %d",position.at(i)->equals());
             Vec2 tmp = Vec2(-1, -1);
-            _pos_arr.pushBack(tmp);
+            _pos_arr.push_back(tmp);
         }
         
        // _position = Vec2(-1, -1);
@@ -66,7 +66,7 @@ Lens3D_Double* Lens3D_Double::clone() const
     return a;
 }
 
-void Lens3D_Double::setPosition(const Vector<Vec2>& pos_arr)
+void Lens3D_Double::setPosition(const std::vector<Vec2>& pos_arr)
 {
     for(int i = 0; i < pos_arr.size();i++){
         //log("tag %d",position.at(i)->equals());

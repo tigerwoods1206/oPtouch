@@ -17,7 +17,7 @@ class CC_DLL Lens3D_Double : public Grid3DAction
 {
 public:
     /** creates the action with center position, radius, a grid size and duration */
-    static Lens3D_Double* create(float duration, const Size& gridSize, const Vector<Vec2>& pos_arr,  const Vector<float>& radiuses);
+    static Lens3D_Double* create(float duration, const Size& gridSize, const std::vector<Vec2>& pos_arr,  const std::vector<float>& radiuses);
     
     /** Get lens center position */
     inline float getLensEffect() const { return _lensEffect; }
@@ -27,7 +27,7 @@ public:
     inline void setConcave(bool concave) { _concave = concave; }
     
     inline const Vec2& getPosition() const { return _position; }
-    void setPosition(const Vector<Vec2>& pos_arr);
+    void setPosition(const std::vector<Vec2>& pos_arr);
     
     // Overrides
     virtual Lens3D_Double* clone() const override;
@@ -38,15 +38,15 @@ CC_CONSTRUCTOR_ACCESS:
     virtual ~Lens3D_Double() {}
     
     /** initializes the action with center position, radius, a grid size and duration */
-    bool initWithDuration(float duration, const Size& gridSize, const Vector<Vec2>& pos_arr, const Vector<float>& radiuses);
+    bool initWithDuration(float duration, const Size& gridSize, const std::vector<Vec2>& pos_arr, const std::vector<float>& radiuses);
     
 protected:
     /* lens center position */
     Vec2 _position;
-    Vector<Vec2> _pos_arr;
+    std::vector<Vec2> _pos_arr;
     
     float _radius;
-    Vector<float> _radiuses;
+    std::vector<float> _radiuses;
     /** lens effect. Defaults to 0.7 - 0 means no effect, 1 is very strong effect */
     float _lensEffect;
     /** lens is concave. (true = concave, false = convex) default is convex i.e. false */
