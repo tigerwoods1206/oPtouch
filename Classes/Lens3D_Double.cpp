@@ -97,9 +97,11 @@ void Lens3D_Double::update(float time)
             {
                 Vec3 v = getOriginalVertex(Vec2(i, j));
                 
-                for(int i = 0; i < _pos_arr.size();i++){
-                    Vec2 vect = _pos_arr.at(i) - Vec2(v.x, v.y);
-                    float radius = _radiuses.at(i);
+                
+                for(int k = 0; k < _pos_arr.size();k++){
+                    
+                    Vec2 vect = _pos_arr.at(k) - Vec2(v.x, v.y);
+                    float radius = _radiuses.at(k);
                     float r = vect.getLength();
                     
                     if (r < radius)
@@ -119,11 +121,12 @@ void Lens3D_Double::update(float time)
                             vect.normalize();
                             Vec2 new_vect = vect * new_r;
                             v.z += (_concave ? -1.0f : 1.0f) * new_vect.getLength() * _lensEffect;
+                           
                         }
                     }
                     
-                    setVertex(Vec2(i, j), v);
                 }
+                setVertex(Vec2(i, j), v);
             }
         }
         

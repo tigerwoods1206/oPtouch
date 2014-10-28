@@ -120,7 +120,7 @@ void HelloWorld::onTouchesBegan(const std::vector<cocos2d::Touch *> &touches, co
         count++;
     }
     
-    //unset_Touchparams();
+    unset_Touchparams();
    
     for (int i=0; i<count; i++) {
         touchPoses.push_back(Vec2(0.0,0.0));
@@ -139,14 +139,24 @@ void HelloWorld::onTouchesMoved(const std::vector<cocos2d::Touch *> &touches, co
    
     std::vector<cocos2d::Touch*>::const_iterator iterator = touches.begin();
     int i = 0;
+    int count = 0;
+    
     while (iterator != touches.end()) {
         Touch* touch = (Touch*)(*iterator);
         auto location = touch->getLocation();
-        touchPoses.at(i).x = touch->getLocation().x;
-        touchPoses.at(i).y = touch->getLocation().y;
+        count = i+1;
         
-        float power  = opSize * (1.0 - touch->getMajorRadius() / opSize);
-        touchRaduses.at(i) = power;
+        float power  = 3*touch->getMajorRadius();//opSize * (1.0 - touch->getMajorRadius() / opSize);
+        if(i==0) log("power[%d] = %f",i,power);
+        if (count > touchPoses.size()) {
+            //touchPoses.push_back(touch->getLocation());
+            //touchRaduses.push_back(power);
+        }
+        else {
+            touchPoses.at(i).x = touch->getLocation().x;
+            touchPoses.at(i).y = touch->getLocation().y;
+            touchRaduses.at(i) = power;
+        }
         
         iterator++;
         i++;
@@ -171,8 +181,8 @@ void HelloWorld::onTouchesEnded(const std::vector<cocos2d::Touch *> &touches, co
 
 void HelloWorld::unset_Touchparams()
 {
-    touchPoses.clear();
-    touchRaduses.clear();
+    if (touchPoses.size()!=0) touchPoses.clear();
+    if (touchRaduses.size()!=0) touchRaduses.clear();
 }
 /*
 void HelloWorld::onTouchMoved(Touch *touch, Event *event)
