@@ -67,6 +67,9 @@
 		76897FA919F0E6780007A5B9 /* WaveShift3D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76897FA719F0E6780007A5B9 /* WaveShift3D.cpp */; };
 		76CA4AF619FE40D200783FD5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 76CA4AF519FE40D200783FD5 /* Images.xcassets */; };
 		76CA4AFB19FE423F00783FD5 /* Lens3D_Double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76CA4AF919FE423F00783FD5 /* Lens3D_Double.cpp */; };
+		76F8669E19FF7ED100D373A2 /* ImagePicker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 76F8669719FF7ED100D373A2 /* ImagePicker.cpp */; };
+		76F866A019FF7ED100D373A2 /* ImagePickerImpl.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76F8669B19FF7ED100D373A2 /* ImagePickerImpl.mm */; };
+		76F866A119FF7ED100D373A2 /* ImagePickerIOS.mm in Sources */ = {isa = PBXBuildFile; fileRef = 76F8669D19FF7ED100D373A2 /* ImagePickerIOS.mm */; };
 		BF171245129291EC00B8313A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB012928DE900B8313A /* OpenGLES.framework */; };
 		BF1712471292920000B8313A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BF170DB412928DE900B8313A /* libz.dylib */; };
 		BF1C47F01293687400B63C5D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF1C47EA1293683800B63C5D /* QuartzCore.framework */; };
@@ -272,6 +275,12 @@
 		76CA4AF519FE40D200783FD5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		76CA4AF919FE423F00783FD5 /* Lens3D_Double.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lens3D_Double.cpp; sourceTree = "<group>"; };
 		76CA4AFA19FE423F00783FD5 /* Lens3D_Double.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lens3D_Double.h; sourceTree = "<group>"; };
+		76F8669719FF7ED100D373A2 /* ImagePicker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImagePicker.cpp; sourceTree = "<group>"; };
+		76F8669819FF7ED100D373A2 /* ImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePicker.h; sourceTree = "<group>"; };
+		76F8669A19FF7ED100D373A2 /* ImagePickerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerImpl.h; sourceTree = "<group>"; };
+		76F8669B19FF7ED100D373A2 /* ImagePickerImpl.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImagePickerImpl.mm; sourceTree = "<group>"; };
+		76F8669C19FF7ED100D373A2 /* ImagePickerIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagePickerIOS.h; sourceTree = "<group>"; };
+		76F8669D19FF7ED100D373A2 /* ImagePickerIOS.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ImagePickerIOS.mm; sourceTree = "<group>"; };
 		BF170DB012928DE900B8313A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		BF170DB412928DE900B8313A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		BF1C47EA1293683800B63C5D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -390,6 +399,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				76F8669619FF7ED100D373A2 /* iOSDevices */,
 				1AC6FAE5180E9839004C840B /* cocos2d_libs.xcodeproj */,
 				15AA9C4015B7EC450033D6C2 /* Classes */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -468,6 +478,19 @@
 			path = ios;
 			sourceTree = SOURCE_ROOT;
 		};
+		76F8669619FF7ED100D373A2 /* iOSDevices */ = {
+			isa = PBXGroup;
+			children = (
+				76F8669719FF7ED100D373A2 /* ImagePicker.cpp */,
+				76F8669819FF7ED100D373A2 /* ImagePicker.h */,
+				76F8669A19FF7ED100D373A2 /* ImagePickerImpl.h */,
+				76F8669B19FF7ED100D373A2 /* ImagePickerImpl.mm */,
+				76F8669C19FF7ED100D373A2 /* ImagePickerIOS.h */,
+				76F8669D19FF7ED100D373A2 /* ImagePickerIOS.mm */,
+			);
+			path = iOSDevices;
+			sourceTree = "<group>";
+		};
 		78C7DDAA14EBA5050085D0C2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -535,7 +558,7 @@
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0610;
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "touch_OP" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -685,10 +708,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				503AE10017EB989F00D1A890 /* AppController.mm in Sources */,
+				76F866A019FF7ED100D373A2 /* ImagePickerImpl.mm in Sources */,
+				76F8669E19FF7ED100D373A2 /* ImagePicker.cpp in Sources */,
 				503AE10217EB989F00D1A890 /* RootViewController.mm in Sources */,
 				1AFAF8B716D35DE700DB1158 /* AppDelegate.cpp in Sources */,
 				76CA4AFB19FE423F00783FD5 /* Lens3D_Double.cpp in Sources */,
 				503AE10117EB989F00D1A890 /* main.m in Sources */,
+				76F866A119FF7ED100D373A2 /* ImagePickerIOS.mm in Sources */,
 				76897FA919F0E6780007A5B9 /* WaveShift3D.cpp in Sources */,
 				1AFAF8B816D35DE700DB1158 /* HelloWorldScene.cpp in Sources */,
 			);
@@ -787,10 +813,12 @@
 				INFOPLIST_FILE = ios/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LIBRARY_SEARCH_PATHS = "";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -823,6 +851,7 @@
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -830,9 +859,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -859,9 +888,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_INLINES_ARE_PRIVATE_EXTERN = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = mac/Prefix.pch;

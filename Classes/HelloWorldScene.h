@@ -2,8 +2,9 @@
 #define __HELLOWORLD_SCENE_H__
 
 #include "cocos2d.h"
+#include "ImagePicker.h"
 
-class HelloWorld : public cocos2d::Layer
+class HelloWorld : public cocos2d::Layer ,public ImagePickerDelegate
 {
 public:
     // there's no 'id' in cpp, so we recommend returning the class instance pointer
@@ -24,8 +25,13 @@ public:
     void menuChangeImageCallback(cocos2d::Ref* pSender);
     
     // implement the "static create()" method manually
+    
     CREATE_FUNC(HelloWorld);
+    
+    virtual void didFinishPickingWithResult(Texture2D* result);
+    
     void update(float delta);
+    
     
 private:
     cocos2d::NodeGrid* one_nodeGrid;

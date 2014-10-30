@@ -1,5 +1,6 @@
 #include "HelloWorldScene.h"
 #include "Lens3D_Double.h"
+#include "ImagePicker.h"
 
 USING_NS_CC;
 
@@ -27,6 +28,7 @@ bool HelloWorld::init()
     {
         return false;
     }
+
     
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
@@ -40,8 +42,9 @@ bool HelloWorld::init()
                                            "CloseNormal.png",
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuCloseCallback, this));
+    closeItem->setScale(2.0f);
     
-	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
+	closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width ,
                                 origin.y + closeItem->getContentSize().height/2));
 
     // create menu, it's an autorelease object
@@ -53,9 +56,10 @@ bool HelloWorld::init()
                                            "CloseNormal.png",
                                            "CloseSelected.png",
                                            CC_CALLBACK_1(HelloWorld::menuChangeImageCallback, this));
+    changeImageItem->setScale(2.0f);
     
-    changeImageItem->setPosition(Vec2(origin.x + visibleSize.width - changeImageItem->getContentSize().width/2 ,
-                                origin.y + changeImageItem->getContentSize().height + 50));
+    changeImageItem->setPosition(Vec2(origin.x + visibleSize.width - changeImageItem->getContentSize().width ,
+                                origin.y + changeImageItem->getContentSize().height + 100));
     
     // create menu, it's an autorelease object
     auto menu2 = Menu::create(changeImageItem, NULL);
@@ -176,29 +180,6 @@ void HelloWorld::unset_Touchparams()
     if (touchRaduses.size()!=0) touchRaduses.clear();
 }
 /*
-void HelloWorld::onTouchMoved(Touch *touch, Event *event)
-{
-    
-    Point location = touch->getLocation();
-    CCLOG("x:%f, y:%f, r%f", location.x, location.y, touch->getMajorRadius());
-    touchPos = location;
-    
-    // create a Waved3D action
-    
-    Size spsize = one_sprite->getContentSize();
-    //log("%f, %f", one_sprite->getContentSize().width, one_sprite->getContentSize().height);
-    //one_sprite->getPosition();
-    float radius = touch->getMajorRadius();
-    //touchPower = opSize * (1.0 - radius / opSize);
-    touchPower = radius*3;
-   
-    float power  = opSize * (1.0 - radius / opSize);
-    Action* waves = Lens3D::create(1/60, Size(10,10),location, power);
-    one_nodeGrid->runAction(waves);
-   
-}
-*/
-/*
 void HelloWorld::onTouchEnded(Touch *touch, Event *event)
 {
     
@@ -273,8 +254,24 @@ void HelloWorld::replaceImage(Sprite *sprite, const char *imageFileName)
     sprite->setTextureRect(CCRectMake(0, 0, contentSize.width, contentSize.height));
 }
 
+void HelloWorld::didFinishPickingWithResult(Texture2D* result)
+{
+    if (result==nullptr) {
+        return;
+    }
+    one_sprite->setTexture(result);
+    Size contentSize = result->getContentSize();
+    one_sprite->setTextureRect(CCRectMake(0, 0, contentSize.width, contentSize.height));
+}
+
+
 void HelloWorld::menuCloseCallback(Ref* pSender)
 {
+   
+    ImagePicker *imgpk = ImagePicker::getInstance();
+    imgpk->setDelegate(this);
+    imgpk->pickImage();
+    /*
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_WP8) || (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT)
 	MessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
     return;
@@ -285,4 +282,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+     */
 }
